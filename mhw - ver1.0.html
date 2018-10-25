@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>MHW !</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style type="text/css">
+	body{font:12px/1.5 Microsoft JhengHei;}
+	#header{margin: 0 auto;padding: 0;
+		width:100vw;height:100px;
+		overflow: hidden;
+	}
+	#sidebar_left {width:50px; background:#3ada7a; height:100px; padding-top:60px;  float:left; }
+	#webcontent{
+	　margin-left:120px;
+	　margin-right:120px;
+	　height:900px;
+	　background-color:#F2FFF2;
+	　text-align:center;
+	　line-height:400px;
+	}
+	#main{
+		width: 500px;
+		margin: 0 auto;
+		padding: 0;
+		text-align: center;
+	}
+	#eq_table td{
+		border-collapse: collapse;
+		border: 1px solid black;
+		text-align: center;
+		width:70px;
+	}
+	#chosen{
+		width: 100%;
+	}
+	#skill{
+		float:left;
+		width:20vw;
+		margin-left: 2%;
+		height:60vh;
+		background-color: rgb(244, 71, 120);
+	}
+	#eq_div{
+		float:left;
+		width:50vw;
+		height:30vh;
+		background-color: rgb(227, 189, 8);
+		overflow:auto;
+	}
+	#material_div{
+		width: 20vw;
+		height:60vh;
+		//height: 200px;
+		//float:right;
+		float:left;
+		margin-left: 2%;
+		background-color: rgb(140, 87, 181);
+	}
+	.normal_table{
+		border-collapse: collapse;
+		border: 1px solid black;
+		text-align: center;
+	}
+	#debug_div{
+		float:left;
+		width:50vw;
+
+	}
+	#myTabContent{
+		overflow:auto;
+	}
+</style>
+<body>
+<header id="header">HEADER</header>
+<!-- <div id="sidebar_left">TES</div> -->
+<div id="webcontent">
+	<div id="eqList">
+	<div id="top_tab">
+		<ul id="myTab" class="nav nav-tabs">
+			<!-- <li v-for="armor in armors" v-bind:class="{active:true}"><a v-bind:href="'#'+armor" data-toggle="tab">{{armor}}</a></li> -->
+			<!-- v-bind:class="{active:true}" -->
+			<li v-for="armor in myarmors" v-if="armor.type=='頭部防具'" :class="{'active':true}"><a v-bind:href="'#'+armor.type" data-toggle="tab">{{armor.type}}</a></li>
+			<li v-for="armor in myarmors" v-if="armor.type!='頭部防具'"><a v-bind:href="'#'+armor.type" data-toggle="tab">{{armor.type}}</a></li>
+		</ul>
+	</div>
+
+	<div id="myTabContent" class="tab-content">
+
+		<!-- 專屬於頭盔 -->
+		<div v-for="armor in myarmors" v-bind:class="{'tab-pane':true, 'fade':true, 'active':true,'in':true}" v-bind:id="armor.type" v-if="armor.type=='頭部防具'">
+			<p>{{armor.intro}}</p>
+			<table id="eq_table">
+				<thead><tr>
+					<td v-for="col in col1">{{col}}</td>
+				</tr></thead>
+				<tbody>
+					<tr v-for="_head in MHhead">
+						<td v-if="false"><button type="button" name="Mybutton" @click="addEquip(_head)">ADD</button></td>
+						<td v-for="id in _head.length" @click="addEquip(_head,armor.type)">{{_head[id-1]}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- 專屬於沒頭盔的屬性 -->
+		<div v-for="armor in myarmors" v-bind:class="{'tab-pane':true, 'fade':true}" v-bind:id="armor.type"  v-if="armor.type!='頭部防具'">
+			<p>{{armor.intro}}</p>
+			<table id="eq_table">
+				<thead><tr>
+					<td v-for="col in col1">{{col}}</td>
+				</tr></thead>
+				<tbody>
+					<tr v-for="_head in armor.db">
+						<td v-if="false"><button type="button" name="Mybutton" @click="addEquip(_head)">ADD</button></td>
+						<td v-for="id in _head.length" @click="addEquip(_head,armor.type)">{{_head[id-1]}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</div>
+	<br>----------
+	<div id="chosen">
+		<h4>選中的裝備</h4>
+		<div id="eq_div">
+		<table id="eq_table">
+			<thead><tr>
+				<td>部位</td>
+				<td v-for="col in col1">{{col}}</td>
+			</tr></thead>
+			<tbody>
+				<tr v-for="ch_head in equippments">
+					<td v-for="id in ch_head.length">{{ch_head[id-1]}}</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<div id="skill">
+			<table class="normal_table">
+				<tr>
+					<td>!234</td><td>r4r</td>
+				</tr>
+			</table>
+		</div>
+		<div id="material_div">
+			<table class="normal_table">
+				<tr>
+					<td>Material</td>
+				</tr>
+			</table>
+		</div>
+		<div id="debug_div">
+			debug:<br>
+			{{equippments}}
+		</div>
+	</div>
+</div> <!-- webcontent -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+</body>
+<script>
+
+var app = new Vue({
+  el: '#eqList',
+  //el: '#webcontent',
+  data:{
+	myarmors:[
+		{type:"頭部防具",intro:"請選擇頭盔!"},
+		{type:"身體防具",intro:"請選擇肩膀護具!"},
+		{type:"護手",intro:"請選擇護手!"},
+		{type:"腰部防具",intro:"請選擇腰間!"},
+		{type:"腿部防具",intro:"請選擇腿部!"}
+	],
+	col1:["裝備名稱","防","火","水","雷","冰","龍","裝飾品","技能1","等級(1)","技能2","等級(2)"],
+
+	MHhead:
+    [{"type":"頭部防具","name":"麒麟角α","defense":[64,-3,-2,4,-2,2],"skill":{"跑者":2,"精靈加護":1},"material":{"麒麟的上皮":3,"麒麟的蒼角":1,"貓蜥龍的上鱗":2,"電擊袋":4},"caseSkill":"幻獸的恩寵"},{"type":"腰部防具","name":"某種防具","defense":[64,-3,-2,4,-2,2],"skill":{"我只有一個技能":2},"material":{"某種的上皮":3,"某種的角":1,"某種的上鱗":2,"某某某":4},"caseSkill":""}]
+    ,
+    table_set: {
+    	choose_eq:12,
+    	
+    }
+	mydata:'Hello Vue!'
+  },
+  created: function(){
+
+  },
+  methods:{
+	addEquip: function(chosen_equip,armor){
+		//app2.equippments.push(chosen_equip);
+		app2.addSelf(chosen_equip,armor);
+	},
+	debugFunc: function(){
+		alert("OK!");
+	},
+    init_fetchData : function(){
+    	var itself = this;
+    	$.get(MHWHeadURL,function(data){
+    		itself.MHhead2 = data;
+    	});
+    },
+    //example
+    removeTodo: function(todo){
+      this.todos.splice(this.todos.indexOf(todo), 1);
+    }
+  }
+})
+
+var app2 = new Vue({
+	el: '#chosen',
+	data:{
+		armors:["頭部防具","身體防具","護手","腰部防具","腿部防具"],
+		//equippments:[],
+		equippments:[["頭部防具",0,0,0,0,0,0,""],
+					 ["身體防具",0,0,0,0,0,0,""],
+					 ["護手",0,0,0,0,0,0,""],
+					 ["腰部防具",0,0,0,0,0,0,""],
+					 ["腿部防具",0,0,0,0,0,0,""],
+					 ["總共","","","","","","",""]],
+					 //["總共","","","","","","","","","","",""]],
+		//col1:["防","火","水","雷","冰","龍","裝飾品","技能1","等級(1)","技能2","等級(2)"],
+		col1:["防","火","水","雷","冰","龍","裝飾品"], // 拿掉後面因為要另外開
+	},
+	methods:{
+		addSelf: function(chosen_equip,armor){
+			//alert(chosen_equip+" & "+armor);
+			for(var i=0; i<this.armors.length;i++){
+				if(armor==this.armors[i]){
+					//example1.items.splice(indexOfItem, 1, newValue)
+					var spliced_arr = chosen_equip.slice();
+					var spliced_arr2 = spliced_arr.splice(8, 4);
+					//alert(spliced_arr2);
+					this.$set(this.equippments,i,spliced_arr);
+					this.update_total();
+				}
+			}
+		},
+		update_total: function(){
+			for(var i=1;i<7;i++){
+				var tmp = 0;
+				for(var j=0;j<5;j++){
+					tmp += this.equippments[j][i];
+				}
+				//alert(tmp);
+				this.$set(this.equippments[5],i,tmp);
+			}// end of for
+		},// end of update function
+	}
+})
+
+$().ready(function(){
+	// something
+	var MHheadDB = app.MHhead;
+	//app.myarmors.push({"db": MHheadDB});
+});
+
+//var apiURL = "https://www2.cs.ccu.edu.tw/~hkc104u/json/example.json";
+//var apiURL = "MHW_example.json";
+//var apiURL = "http://localhost:8080/MHW_example.json";
+var MHWHeadURL = "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/41bf7ff55771cad093b546887711fed060868f7d/MHW_example.json";
+//var apiURL = "http://jsonviewer.stack.hu/#http://www2.cs.ccu.edu.tw/~hkc104u/json/MHW_example.json";
+$.getJSON(MHWHeadURL, function(json) {
+    console.log(json); // this will show the info it in firebug console
+});
+
+</script>
+</html>

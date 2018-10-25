@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>MHW !</title>
+	<link rel="icon" type="image/png" href="https://i.imgur.com/42XjRUc.png">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style type="text/css">
+	body{font:12px/1.5 Microsoft JhengHei;}
+	#header{margin: 0 auto;padding: 0;
+		width:100vw;height:100px;
+		overflow: hidden;
+	}
+	#sidebar_left {width:50px; background:#3ada7a; height:100px; padding-top:60px;  float:left; }
+	#webcontent{
+	　margin-left:120px;
+	　margin-right:120px;
+	　height:900px;
+	　background-color:#F2FFF2;
+	　text-align:center;
+	　line-height:400px;
+	}
+	#main{
+		width: 500px;
+		margin: 0 auto;
+		padding: 0;
+		text-align: center;
+	}
+	#myTabContent{
+		overflow:auto;
+		height: 40vh;
+		//width: 100vw;
+	}
+
+	#chosen{
+		width: 95%;
+	}
+	#eq_div{
+		float:left;
+		width:50vw;
+		height:60vh;
+		//background-color: rgb(227, 189, 8);
+		overflow:auto;
+	}
+	#eq_table{
+		width: 90%;
+		cursor: pointer;
+	}
+	#eq_table td, #deco_table td{
+		border-collapse: collapse;
+		border: 1px solid #c2cfd6;
+		text-align: center;
+		//width:70px;
+		height: 50px;
+		padding: 0.75rem;
+	}
+	#deco_table{
+		width:90%;
+	}
+	#chosen_eq_table{
+		width: 49vw;
+	}
+	#material_div{
+		width: 20vw;
+		height:60vh;
+		//float:right;
+		float:left;
+		margin-left: 2%;
+		//background-color: rgb(140, 87, 181);
+		overflow-y: auto;
+		overflow-x:hidden;
+	}
+	.normal_table{
+		border-collapse: separate;
+		border-radius:15px;
+	}
+	.normal_table td{
+		border: 0.5px solid #c2cfd6;
+		border-top-style: none;
+
+		text-align: center;
+		padding: 0.75rem;
+		height: 40px;
+	}
+	#skill_div{
+		float:left;
+		width:20vw;
+		margin-left: 2%;
+		height:60vh;
+		//background-color: rgb(244, 71, 120);
+		overflow-y: auto;
+		overflow-x:hidden;
+	}
+	#skill_table{
+		width:20vw;
+	}
+	#material_table{
+		width: 20vw;
+	}
+	#eq_div,#skill_div,#material_div{
+		border-color: rgb(176, 242, 255);
+		border-style:solid;
+		border-radius:15px;
+	}
+	#debug_div{
+		float:left;
+		width:50vw;
+
+	}
+	.deco_left_div, .deco_right_div{
+		float: left;
+		width: 45vw;
+		height: 39vh;
+		overflow-y: auto;
+		overflow-x:hidden;
+		margin-left: 2vw;
+	}
+	.button_gray{
+		background-color: white;
+		border: 2px solid rgb(176, 242, 255);
+		color: black;
+	}
+	.button_gray:hover {background-color: rgb(176, 242, 255);}
+	.footer2 {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: red;
+		color: white;
+		text-align: center;
+		margin-top: -100px;
+	}
+	.footer{
+		text-align: center;
+		clear: both;
+		margin-top: -3em;
+		position: relative;
+		z-index: 10;
+		height: 2em;
+		font-size: 14px;
+		color: #999;
+		font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+	}
+</style>
+<body>
+<header id="header">HEADER</header>
+<!-- <div id="sidebar_left">TES</div> -->
+<div id="webcontent">
+	<div id="eqList">
+	<div id="top_tab" style="margin-left: 2vw;">
+		<ul id="myTab" class="nav nav-tabs">
+			<!-- <li v-for="armor in armors" v-bind:class="{active:true}"><a v-bind:href="'#'+armor" data-toggle="tab">{{armor}}</a></li> -->
+			<!-- v-bind:class="{active:true}" -->
+			<li v-for="armor in myarmors" v-if="armor.type=='頭部防具'" :class="{'active':true}"><a v-bind:href="'#'+armor.type" data-toggle="tab">{{armor.type}}</a></li>
+			<li v-for="armor in myarmors" v-if="armor.type!='頭部防具'"><a v-bind:href="'#'+armor.type" data-toggle="tab">{{armor.type}}</a></li>
+		</ul>
+	</div>
+
+	<div id="myTabContent" class="tab-content">
+
+		<!-- 專屬於頭盔 -->
+		<div v-for="armor in myarmors" v-bind:class="{'tab-pane':true, 'fade':true, 'active':true,'in':true}" v-bind:id="armor.type" v-if="armor.type=='頭部防具'">
+			<p style="margin-left: 2vw;"><br>&nbsp;&nbsp;{{armor.intro}}<img :src="armor.img">&nbsp;<a href="#爆鱗龍頭盔β">爆鱗龍頭盔β</a> &nbsp;<a href="#火龍頭盔β">火龍頭盔β</a> &nbsp;<a href="#烏爾德頭盔β">烏爾德頭盔β</a> </p>
+				<table id="eq_table" style="margin-left: 2vw;">
+				<thead><tr>
+					<td v-for="col in col1">{{col}}</td>
+				</tr></thead>
+				<tbody>
+					<tr v-for="_head in armor.db" @click="addEquip(_head,armor.type)">
+						<!-- For debug --><td v-if="false"><button type="button" name="Mybutton" @click="addEquip(_head)">ADD</button></td>
+						<td scope="row" :id="_head.name">{{_head.name}}</td>
+						<td v-for="each_def in _head.defense.length" >{{_head.defense[each_def-1]}}</td>
+						<td><b v-if="_head.decoration[0] > 0">① : {{_head.decoration[0]}}</b>
+							<b v-if="_head.decoration[1] > 0">② : {{_head.decoration[1]}}</b>
+							<b v-if="_head.decoration[2] > 0">③ : {{_head.decoration[2]}}</b>
+						</td><!-- v-for="idx in _head.decoration[0]" -->
+						<td v-for="(skill_lv,each_skill) in _head.skill" :colspan="3 - Object.keys(_head.skill).length" >{{each_skill}} : {{skill_lv}}</td>
+						<td v-for="(material_num, material_name) in _head.material" >{{material_name}} : {{material_num}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- 專屬於沒頭盔的屬性 -->
+		<div v-for="armor in myarmors" v-bind:class="{'tab-pane':true, 'fade':true}" v-bind:id="armor.type"  v-if="armor.type!='頭部防具'&& armor.type!='護石'&& armor.type!='裝飾品'">
+			<p style="margin-left: 2vw;"><br>&nbsp;&nbsp;{{armor.intro}}<img :src="armor.img"></p>
+			<table id="eq_table" style="margin-left: 2vw;">
+				<thead><tr>
+					<td v-for="col in col1">{{col}}</td>
+				</tr></thead>
+				<tbody>
+					<tr v-for="_head in armor.db" @click="addEquip(_head,armor.type)">
+						<!-- For debug --><td v-if="false"><button type="button" name="Mybutton" @click="addEquip(_head)">ADD</button></td>
+						<td scope="row" :id="_head.name">{{_head.name}}</td>
+						<td v-for="each_def in _head.defense.length" >{{_head.defense[each_def-1]}}</td>
+						<td><b v-if="_head.decoration[0] > 0">① : {{_head.decoration[0]}}</b>
+							<b v-if="_head.decoration[1] > 0">② : {{_head.decoration[1]}}</b>
+							<b v-if="_head.decoration[2] > 0">③ : {{_head.decoration[2]}}</b>
+						</td><!-- v-for="idx in _head.decoration[0]" -->
+						<td v-for="(skill_lv,each_skill) in _head.skill" :colspan="3 - Object.keys(_head.skill).length" >{{each_skill}} : {{skill_lv}}</td>
+						<td v-for="(material_num, material_name) in _head.material" >{{material_name}} : {{material_num}}</td>
+						<!-- <td>{{skill.lv}}</td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- 專屬於 護石 的屬性 -->
+		<div v-for="armor in myarmors" v-bind:class="{'tab-pane':true, 'fade':true}" v-bind:id="armor.type"  v-if="armor.type=='護石'">
+			<p style="margin-left: 2vw;"><br>&nbsp;&nbsp;{{armor.intro}}<img :src="armor.img"></p>
+			<table id="eq_table" style="margin-left: 2vw;">
+				<thead><tr>
+					<td v-for="col in col2" v-if="armor.type=='護石'">{{col}}</td>
+					<td v-for="col in col3" v-if="armor.type=='裝飾品'">{{col}}</td>
+				</tr></thead>
+				<tbody>
+					<tr v-for="_accessory in armor.db" @click="addEquip(_accessory,armor.type)">
+						<td scope="row" :id="_accessory.name">{{_accessory.name}}</td>
+						<td>{{_accessory.describe}}</td>
+						<td v-if="armor.type=='護石'">{{_accessory.level}}</td>
+						<td v-if="armor.type=='裝飾品'">
+							<b v-if="_accessory.level == 1">①</b>
+							<b v-if="_accessory.level == 2">②</b>
+							<b v-if="_accessory.level == 3">③</b>
+						</td><!-- v-for="idx in _head.decoration[0]" -->
+						<td v-for="(material_num, material_name) in _accessory.material" v-if="armor.type=='護石'">{{material_name}} : {{material_num}}</td>
+						<!-- <td>{{skill.lv}}</td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- 專屬於 裝飾品 的屬性 -->
+		<div v-for="armor in myarmors" v-bind:class="{'tab-pane':true, 'fade':true}" v-bind:id="armor.type"  v-if="armor.type=='裝飾品'">
+		<div class="deco_left_div">
+
+			<p><br>&nbsp;&nbsp;{{armor.intro}}<img :src="armor.img"></p>
+			<table id="eq_table">
+				<thead><tr>
+					<td v-for="col in col3" v-if="armor.type=='裝飾品'">{{col}}</td>
+				</tr></thead>
+				<tbody>
+					<tr v-for="_accessory in armor.db" @click="addEquip(_accessory,armor.type)">
+						<td scope="row" :id="_accessory.name">{{_accessory.name}}</td>
+						<td>{{_accessory.describe}}</td>
+						<td v-if="armor.type=='裝飾品'">
+							<b v-if="_accessory.level == 1">①</b>
+							<b v-if="_accessory.level == 2">②</b>
+							<b v-if="_accessory.level == 3">③</b>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="deco_right_div">
+			<br><p style="text-align:center;width: 90%;">已選中的裝飾品</p>
+			<pre style="text-align:center;width: 90%;"> 一級珠 : {{deco_level_arr[0]}} 二級珠 : {{deco_level_arr[1]}} 三級珠 : {{deco_level_arr[0]}}</pre>
+			<pre style="text-align:center;width: 90%;">尚可選擇  一級珠 : {{deco_num_onArmor[0]-deco_level_arr[0]}} 二級珠 : {{deco_num_onArmor[1]-deco_level_arr[1]}} 三級珠 : {{deco_num_onArmor[2]-deco_level_arr[2]}}</pre>
+			<table id="deco_table">
+				<tr><td>珠子</td><td>效果</td><td>數量</td></tr>
+				<tr v-for="each_deco in have_deco">
+					<td>{{each_deco.name}}&nbsp;({{each_deco.level}})</td><td>{{each_deco.describe}}</td>
+					<td><button class="button_gray" @click="change_deco_num(each_deco,1)"> + </button>&nbsp;&nbsp;{{each_deco.num}}&nbsp;&nbsp;
+						<button class="button_gray" @click="change_deco_num(each_deco,-1)"> - </button></td>
+				</tr>
+			</table>
+		</div>  <!-- deco_right_div -->
+		</div>
+
+
+
+	</div>
+	</div>
+	<hr>
+	<div id="chosen">
+		<h4 style="margin-left:22vw;">選中的裝備</h4>
+		<div id="eq_div">
+		<table  id="chosen_eq_table" class="normal_table">
+			<thead><tr>
+				<td>部位</td>
+				<td v-for="col in col1">{{col}}</td>
+			</tr></thead>
+			<tbody>
+				<tr v-for="ch_head in equippments">
+					<td v-for="id in ch_head.length">{{ch_head[id-1]}}</td>
+				</tr>
+				<tr><td>護石</td><td colspan="2">{{have_guardianstone.name}}</td><td>珠</td>
+					<td colspan="4" ><deco v-for="each_deco in have_deco">&nbsp;{{each_deco.name}}&nbsp;:&nbsp;{{each_deco.num}}&nbsp;</deco></td></tr>
+			</tbody>
+		</table>
+		</div>
+		<div id="skill_div">
+			<table class="normal_table" id="skill_table">
+				<tr>
+					<td style="font-weight:bold;">擁有的技能</td>
+				</tr>
+				<tr v-for="(skill_LV,each_skill) in have_skill"><td>{{each_skill}} : {{skill_LV}}</td></tr>
+			</table>
+		</div>
+		<div id="material_div">
+			<table class="normal_table" id="material_table">
+				<tr>
+					<td style="font-weight:bold;">需要的素材</td>
+				</tr>
+				<tr v-for="(material_num,each_material) in have_material"><td>{{each_material}} : {{material_num}}</td></tr>
+			</table>
+		</div>
+		<div id="debug_div">
+			debug:<br>
+			{{equippments}}
+		</div>
+	</div>
+</div> <!-- webcontent -->
+<br><br><br>
+<div class="">
+
+
+</div>
+<div class="footer">
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="hosted_button_id" value="TPPXP7B8SSGTQ">
+	<table style="margin-left:auto;margin-right:auto;">
+	<tr><td><select name="os0">
+		<option value="請你吃早餐~">請你吃午餐~ NT$50 TWD</option>
+		<option value="請你喝星巴克~">請你喝星巴克~ NT$100 TWD</option>
+		<option value="請你喝星冰樂~">請你喝星冰樂~ NT$150 TWD</option>
+	</select></td></tr>
+	</table>
+	<input type="hidden" name="currency_code" value="TWD">
+	<input type="image" src="https://i.imgur.com/7cph6PF.png?1" border="0" name="submit" alt="PayPal － 更安全、更簡單的線上付款方式！">
+	<img alt="" border="0" src="https://www.paypalobjects.com/zh_TW/i/scr/pixel.gif" width="1" height="1">
+	</form>
+
+	Maintenance by MeteorV<br>假若有任何問題與建議，歡迎來信到我的<a href="mailto:ekids12345@gmail.com">信箱</a>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+</body>
+<script>
+
+var app = new Vue({
+  el: '#eqList',
+  //el: '#webcontent',
+  data:{
+	myarmors:[
+		{type:"頭部防具",intro:"請選擇頭盔~",db:"",img:"https://i.imgur.com/OICMBeN.png"},
+		{type:"身體防具",intro:"請選擇肩膀護具~",db:"",img:"https://i.imgur.com/rw8JYo0.png"},
+		{type:"腕部防具",intro:"請選擇護手~",db:"",img:"https://i.imgur.com/iFtrCHe.png"},
+		{type:"腰部防具",intro:"請選擇腰間~",db:"",img:"https://i.imgur.com/hTYEFBd.png"},
+		{type:"腿部防具",intro:"請選擇腿部~",db:"",img:"https://i.imgur.com/o8MJstC.png"},
+		{type:"護石",    intro:"請選擇護石~",db:"",img:""},
+		{type:"裝飾品"  ,intro:"請選擇珠子~",db:"",img:"https://i.imgur.com/wBLoZqI.png?1"}
+	],
+	col1:["裝備名稱","防","火","水","雷","冰","龍","裝飾品","技能1","技能2","所需素材  "],
+	col2:["護石名稱","效果","擁有等級","所需素材"],
+	col3:["珠子名稱","效果","格子等級"],
+	MHhead:
+    [{"type":"頭部防具","name":"麒麟角α","defense":[64,-3,-2,4,-2,2],"skill":{"跑者":2,"精靈加護":1},"material":{"麒麟的上皮":3,"麒麟的蒼角":1,"貓蜥龍的上鱗":2,"電擊袋":4},"caseSkill":"幻獸的恩寵"},{"type":"腰部防具","name":"某種防具","defense":[64,-3,-2,4,-2,2],"skill":{"我只有一個技能":2},"material":{"某種的上皮":3,"某種的角":1,"某種的上鱗":2,"某某某":4},"caseSkill":""}]
+    ,
+    table_set: {
+    	choose_eq:12
+    },
+	have_deco : [],
+	deco_level_arr :[0,0,0],
+	deco_num_onArmor :[0,0,0],
+    MHhead2:null,
+	mydata:'Hello Vue!',
+	MHW_HEAD_URL : "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/8c437c6157b8faf864c32a9e1d6ed387c5060b8d/MHW_HEAD.json",
+	MHW_BODY_URL : "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/0666d8b3fda1f3708777a45a82c8e6aebf29b98f/MHW_BODY.json",
+	MHW_HAND_URL : "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/0666d8b3fda1f3708777a45a82c8e6aebf29b98f/MHW_HAND.json",
+	MHW_WAIST_URL : "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/0666d8b3fda1f3708777a45a82c8e6aebf29b98f/MHW_WAIST.json",
+	MHW_LEG_URL : "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/0666d8b3fda1f3708777a45a82c8e6aebf29b98f/MHW_LEG.json",
+	MHW_DECO_URL : "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/dfedd3b101c53db15e51ab64e4186e3cf4a43c52/MHW_DECO.json",
+	MHW_GUARDIANSTONE_URL : "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/46f3e4c63b829aa07ffad34c7f549577815b9ee5/MHW_GUARDIANSTONE.json",
+	MHWHeadURL2 : "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/41bf7ff55771cad093b546887711fed060868f7d/MHW_example.json"
+  },
+  created: function(){
+  		this.init_fetchData();
+  		//this.init_pushDB(); // Invalid
+  },
+  methods:{
+	addEquip: function(chosen_equip,armor){
+		//app2.equippments.push(chosen_equip);
+		app2.addSelf(chosen_equip,armor);
+	},
+	debugFunc: function(){
+		alert("OK!");
+	},
+    init_fetchData : function(){
+    	var itself = this;
+    	$.getJSON(this.MHW_HEAD_URL, function(json) {
+		    console.log(json); // this will show the info it in firebug console
+    		itself.MHhead = json; // itself is very very important.
+    		itself.myarmors[0]["db"] = json ;
+		});
+		$.getJSON(this.MHW_BODY_URL, function(json) {
+		    console.log(json); // this will show the info it in firebug console
+    		//itself.MHhead = json; // itself is very very important.
+    		itself.myarmors[1]["db"] = json ;
+		});
+		$.getJSON(this.MHW_HAND_URL, function(json) {
+		    console.log(json); // this will show the info it in firebug console
+    		//itself.MHhead = json; // itself is very very important.
+    		itself.myarmors[2]["db"] = json ;
+		});
+		$.getJSON(this.MHW_WAIST_URL, function(json) {
+		    console.log(json); // this will show the info it in firebug console
+    		//itself.MHhead = json; // itself is very very important.
+    		itself.myarmors[3]["db"] = json ;
+		});
+		$.getJSON(this.MHW_LEG_URL, function(json) {
+		    console.log(json); // this will show the info it in firebug console
+    		//itself.MHhead = json; // itself is very very important.
+    		itself.myarmors[4]["db"] = json ;
+		});
+		$.getJSON(this.MHW_GUARDIANSTONE_URL, function(json) {
+		    console.log(json); // this will show the info it in firebug console
+    		//itself.MHhead = json; // itself is very very important.
+    		itself.myarmors[5]["db"] = json ;
+		});
+		$.getJSON(this.MHW_DECO_URL, function(json) {
+		    console.log(json); // this will show the info it in firebug console
+    		//itself.MHhead = json; // itself is very very important.
+    		itself.myarmors[6]["db"] = json ;
+		});
+    },
+    init_pushDB : function(){
+    	this.myarmors[0]["db"] = this.MHhead ; // invalid, I don't know why
+    },
+	change_deco_num : function(changed_deco,_number){
+		for(var i=0;i< this.have_deco.length; i++){
+			var curr_deco_name = this.have_deco[i].name;
+			if(curr_deco_name == changed_deco.name){
+				if(this.have_deco[i].num==0){this.have_deco.splice(i,1); break;}
+				this.have_deco[i].num = _number > 0 ? this.have_deco[i].num+1 : this.have_deco[i].num-1;
+				break;
+			}
+		}
+		app2.have_deco = this.have_deco.slice();
+		app2.update_skill();
+	},
+    //example
+    removeTodo: function(todo){
+      this.todos.splice(this.todos.indexOf(todo), 1);
+    }
+  }
+})
+
+var app2 = new Vue({
+	el: '#chosen',
+	data:{
+		armors:["頭部防具","身體防具","腕部防具","腰部防具","腿部防具"],
+		col1:["防","火","水","雷","冰","龍","裝飾品"], // 拿掉後面因為要另外開
+		equippments:[["頭部防具",0,0,0,0,0,0,""],
+					 ["身體防具",0,0,0,0,0,0,""],
+					 ["腕部防具",0,0,0,0,0,0,""],
+					 ["腰部防具",0,0,0,0,0,0,""],
+					 ["腿部防具",0,0,0,0,0,0,""],
+					 ["總共","","","","","","",""]],
+					 //["總共","","","","","","","","","","",""]],
+		//col1:["防","火","水","雷","冰","龍","裝飾品","技能1","等級(1)","技能2","等級(2)"],
+		MHW_caseSkill_URL : "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/dcf7a33d97535f9ad731dd0f5b9bdce87b329a94/MHW_caseSkill.json",
+
+		have_skill:{}, // "skill_name": LV
+		have_material:{},
+		have_armors:["","","","",""],
+		default_armor:{"type": "防具", "name": "無防具", "caseSk": "", "defense": ["0", "0", "0", "0", "0", "0"], "material": {}, "skill": {}, "decoration": {"1":0,"2":0,"3":0}},
+		have_guardianstone : "",
+		have_deco : [],
+		caseSkill_list : [],
+		deco_level_arr :[0,0,0],
+	},
+	created:function(){
+    	this.init_fetchData();
+    },
+	methods:{
+		init_fetchData : function(){
+	    	var itself = this;
+	    	$.getJSON(this.MHW_caseSkill_URL, function(json) {
+			    console.log(json); // this will show the info it in firebug console
+	    		itself.caseSkill_list = json; // itself is very very important.
+			});
+		},
+		addSelf: function(chosen_equip,armor_type){
+			//alert(chosen_equip+" & "+armor);
+			// 傳進來的是 整個 armor 和 armor_type
+			for(var i=0; i<this.armors.length;i++){
+				if(armor_type==this.armors[i]){
+					this.$set(this.have_armors,i,chosen_equip);  // 先備份到 have_armors, 用取代的方式
+					//console.log("??? :",this.have_armors); // debug
+
+					var newarr = [];
+					newarr.push(chosen_equip.name);
+					newarr = newarr.concat(chosen_equip.defense);
+					console.log(newarr);
+					//newarr.push(""); // decoration ① ② ③
+					// this is for count the equippments can contain how many decorations
+					var tmp_decoration_arr = "";
+					if(chosen_equip.decoration[0]>0) tmp_decoration_arr+="① : " + chosen_equip.decoration[0];
+					if(chosen_equip.decoration[1]>0) tmp_decoration_arr+=" ② : " + chosen_equip.decoration[1];
+					if(chosen_equip.decoration[2]>0) tmp_decoration_arr+=" ① : " + chosen_equip.decoration[2];
+					newarr.push(tmp_decoration_arr);
+
+					//example1.items.splice(indexOfItem, 1, newValue)
+					this.$set(this.equippments,i,newarr);
+					this.update_total();
+					this.update_skill();
+					this.update_material();
+					this.update_decoration();
+				}
+			}// end of for
+			if(armor_type == "護石"){
+				this.have_guardianstone = chosen_equip;
+				this.update_skill();
+			}
+			if(armor_type == "裝飾品"){
+				var flag = 0;
+				for(var i=0; i< this.have_deco.length ; i++){
+					var curr_deco_name = this.have_deco[i]['name'];
+					if(chosen_equip.name == curr_deco_name){
+						this.have_deco[i].num++;
+						flag = 1;
+						break;
+					}
+				}// end of for
+				if(flag == 0){
+					var new_ele = Object.assign({},chosen_equip);
+					new_ele['num'] = 1;
+					this.have_deco.push(new_ele);
+				}
+				console.log("addSelf,deco",this.have_deco);
+				app.have_deco = this.have_deco.slice(); // copy array
+				this.update_skill();
+
+			} // if decoration
+		},
+		update_total: function(){
+			for(var i=1;i<7;i++){
+				var tmp = 0;
+				for(var j=0;j<5;j++){
+					tmp += Number(this.equippments[j][i]);
+				}
+				//alert(tmp);
+				this.$set(this.equippments[5],i,tmp);
+			}// end of for
+		},// end of update function
+		update_skill: function(){
+			var have_armors = this.have_armors;
+			// 執行查找 armors
+			// 動作 : 從 have_armors (array) 過濾 skill
+			var Skill_dir = {}; // 每次查找，都重做一個 dictionary ，乾淨。
+			var case_dir={};
+			for(var i = 0; i< have_armors.length; i++){
+				// 遍歷 五種 armors ，這邊不要用 Object.assign 因為 same key 無法 add
+
+				if(have_armors[i]=="") continue; // dirty value 2333
+				// 先來記錄一下 caseSkill 吧 !
+				if(have_armors[i]["caseSkill"] in case_dir)
+					case_dir[have_armors[i]["caseSkill"]]+=1;
+				else case_dir[have_armors[i]["caseSkill"]]=1;
+
+				// 小 for 遍歷 skill dictionary
+				for(curr_skill_name in have_armors[i]["skill"]){
+					//console.log(Object.keys(have_armors[i]["skill"]).length);
+					if(curr_skill_name in Skill_dir)
+						Skill_dir[curr_skill_name]+= Number(have_armors[i]["skill"][curr_skill_name]);
+					else{
+						Skill_dir[curr_skill_name] = Number(have_armors[i]["skill"][curr_skill_name]);
+					}
+				}
+			} // End of for have_armors.length
+
+			// 檢查完 caseSkill 了，那來比對一下有沒有多出技能。
+			for(var i=0; i< Object.keys(case_dir).length;i++){
+				var curr_case_name = Object.keys(case_dir)[i]; // 爆鎚龍之守護
+				console.log("test1:",curr_case_name);
+				for(var j=0; j < this.caseSkill_list.length; j++){
+					if(this.caseSkill_list[j].caseskill == curr_case_name){
+						if(this.caseSkill_list[j].need_num <= case_dir[curr_case_name]){
+							console.log("fuck",this.caseSkill_list[j]['skill']); // 防禦強化
+							var tmp = this.caseSkill_list[j]['skill'];
+							if(tmp in Skill_dir)
+								Skill_dir[tmp]+= parseInt(case_dir[curr_case_name]/this.caseSkill_list[j].need_num);
+							else{
+								Skill_dir[tmp] = parseInt(case_dir[curr_case_name]/this.caseSkill_list[j].need_num);
+							}
+							continue;
+						}
+					}
+				}// end of for j
+			}
+
+			// 執行查找 guardianstone
+			// ez find way, don't use for loop to overview key QQ
+			// ... 小心 沒選護石產生 undefined 的 BUGGGGGGG
+			if(this.have_guardianstone!=""){
+				if(this.have_guardianstone.describe in Skill_dir)
+					Skill_dir[this.have_guardianstone.describe]+= this.have_guardianstone.level ;
+				else
+					Skill_dir[this.have_guardianstone.describe] = this.have_guardianstone.level ;
+			}
+
+			// 創建一個 arr 紀錄裝飾品 level 1-3 數量
+			var deco_level_arr=[0,0,0];
+			// 執行查找 decoration
+			if(this.have_deco!=""){
+				for(var i=0; i<this.have_deco.length;i++){
+					var curr_deco_describe = this.have_deco[i].describe;
+					if(this.have_deco[i].level==1) deco_level_arr[0]+=this.have_deco[i].num;
+					if(this.have_deco[i].level==2) deco_level_arr[1]+=this.have_deco[i].num;
+					if(this.have_deco[i].level==3) deco_level_arr[2]+=this.have_deco[i].num;
+
+					if(curr_deco_describe in Skill_dir){
+						this.Skill_dir[curr_deco_describe] += this.have_deco[i].num;
+					}
+					else{
+						Skill_dir[curr_deco_describe] = this.have_deco[i].num;
+					}
+				}
+				this.deco_level_arr = deco_level_arr.slice();
+				app.deco_level_arr = deco_level_arr.slice();
+
+			}
+			else console.log("this.have_deco is empty!");
+
+
+			this.have_skill = Object.assign({},Skill_dir);
+			// 執行查找 caseSkill
+
+		},   // end of update_skill
+		update_material: function(){
+			var have_armors = this.have_armors;
+			// 執行查找 armors
+			// 動作 : 從 have_armors (array) 過濾 material
+			var material_arr = {}; // 每次查找，都重做一個 dictionary ，乾淨。
+			for(var i = 0; i< have_armors.length; i++){
+				// 遍歷 五種 armors ，這邊不要用 Object.assign 因為 same key 無法 add
+
+				if(have_armors[i]=="") continue; // dirty value 2333
+
+				// 小 for 遍歷 skill dictionary
+				for(curr_material_name in have_armors[i]["material"]){
+					//console.log(Object.keys(have_armors[i]["skill"]).length);
+					if(curr_material_name in material_arr)
+						material_arr[curr_material_name]+= Number(have_armors[i]["material"][curr_material_name]);
+					else{
+						material_arr[curr_material_name] = Number(have_armors[i]["material"][curr_material_name]);
+					}
+				}
+			} // End of for have_armors.length
+			//console.log(material_arr);
+			this.have_material = Object.assign({},material_arr);
+		},   // end of update_material
+		update_decoration: function(){
+			var have_armors = this.have_armors;
+			var oneLV=0,twoLV=0,threeLV=0,zero=0;
+			for(var i=0;i<have_armors.length; i++){
+				if(have_armors[i]=="") continue; // dirty value .... FKU BUGGGGGGG !!!!
+				// console.log(i,"&",have_armors[i].decoration);  // very well debug way !
+				if(Number(have_armors[i].decoration[0])>0) oneLV+= Number(have_armors[i].decoration[0]);
+				if(Number(have_armors[i].decoration[1])>0) twoLV+= Number(have_armors[i].decoration[1]);
+				if(Number(have_armors[i].decoration[2])>0) threeLV+= Number(have_armors[i].decoration[2]);
+			}
+			var tmp_arr = ""; // ② ③
+			if(oneLV>0) tmp_arr+="① : "+oneLV;
+			if(twoLV>0) tmp_arr+=" ② : "+twoLV;
+			if(threeLV>0) tmp_arr+=" ③ : "+threeLV;
+			var tmp_deco_level_num_arr = [0,0,0];
+			tmp_deco_level_num_arr[0]=oneLV; tmp_deco_level_num_arr[1]=twoLV; tmp_deco_level_num_arr[2]=threeLV;
+			this.$set(this.equippments[5],7,tmp_arr);
+			app.deco_num_onArmor = tmp_deco_level_num_arr.slice();
+		}    // end of update_decoration
+
+	}
+})
+
+$().ready(function(){
+	// something
+	var MHheadDB = app.MHhead;
+	//app.myarmors.push({"db": MHheadDB});
+});
+
+//var apiURL = "https://www2.cs.ccu.edu.tw/~hkc104u/json/example.json";
+//var apiURL = "MHW_example.json";
+//var apiURL = "http://localhost:8080/MHW_example.json";
+var MHWHeadURL = "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/41bf7ff55771cad093b546887711fed060868f7d/MHW_example.json";
+var MHWHeadURL = "https://gist.githubusercontent.com/ekids1234/6bb9e81b6becc01fa54c5414593341f0/raw/8c437c6157b8faf864c32a9e1d6ed387c5060b8d/MHW_HEAD.json";
+//var apiURL = "http://jsonviewer.stack.hu/#http://www2.cs.ccu.edu.tw/~hkc104u/json/MHW_example.json";
+$.getJSON(MHWHeadURL, function(json) {
+    //console.log(json); // this will show the info it in firebug console
+});
+
+
+
+</script>
+</html>

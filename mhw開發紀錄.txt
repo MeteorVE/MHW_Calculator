@@ -1,0 +1,3 @@
+ver 1.0 : 
+MHhead是array的形式，可以正常做function。
+希望下個版本可以做到 : 讀json，以及把data都改成json，但是要把v-for改掉，可能需要很大工夫。

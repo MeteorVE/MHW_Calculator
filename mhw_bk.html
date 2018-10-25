@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bootstrap 实例 - 标签页（Tab）插件</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style type="text/css">
+	body{font:12px/1.5 Microsoft JhengHei;}
+	#header{margin: 0 auto;padding: 0;
+		width:100vw;height:100px;
+		overflow: hidden;
+	}
+	#sidebar_left {width:50px; background:#3ada7a; height:100px; padding-top:60px;  float:left; }
+	#webcontent{
+	　margin-left:120px;
+	　margin-right:120px;
+	　height:900px;
+	　background-color:#F2FFF2;
+	　text-align:center;
+	　line-height:400px;
+	}
+	#main{
+		width: 500px;
+		margin: 0 auto;
+		padding: 0;
+		text-align: center;
+	}
+</style>
+<body>
+<header id="header">HEADER</header>
+<!-- <div id="sidebar_left">TES</div> -->
+<div id="webcontent">
+	<div id="top_tab">
+		<ul id="myTab" class="nav nav-tabs">
+			<!-- <li v-for="armor in armors" v-bind:class="{active:true}"><a v-bind:href="'#'+armor" data-toggle="tab">{{armor}}</a></li> -->
+			<!-- v-bind:class="{active:true}" -->
+			<li v-for="armor in myarmors" v-if="armor.type=='頭部防具'" :class="{'active':true}"><a v-bind:href="'#'+armor.type" data-toggle="tab">{{armor.type}}</a></li>
+			<li v-for="armor in myarmors" v-if="armor.type!='頭部防具'"><a v-bind:href="'#'+armor.type" data-toggle="tab">{{armor.type}}</a></li>
+			<li><a href="#home" data-toggle="tab">Home</a></li>
+			<li><a href="#ios" data-toggle="tab">iOS</a></li>
+		</ul>
+	</div>
+	<div id="myTabContent" class="tab-content">
+
+		<div v-for="armor in myarmors" v-bind:class="{'tab-pane':true, 'fade':true, 'active':true,'in':true}" v-bind:id="armor.type" v-if="armor.type=='頭部防具'">
+			<p>{{armor.intro}}</p>
+		</div>
+
+		<div v-for="armor in myarmors" v-bind:class="{'tab-pane':true, 'fade':true}" v-bind:id="armor.type"  v-if="armor.type!='頭部防具'">
+			<p>{{armor.intro}}</p>
+		</div>
+		<div class="tab-pane fade" id="home">
+			<p>Home</p>
+		</div>
+		<div class="tab-pane fade" id="ios">
+			<p>iOS</p>
+		</div>
+	</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+</body>
+<script>
+var app = new Vue({
+  el: '#webcontent',
+  //el: '#webcontent',
+  data:{
+	myarmors:[
+		{type:"頭部防具",intro:"我是頭盔!"},
+		{type:"身體防具",intro:"我是肩膀護具!"},
+		{type:"護手",intro:"我是護手!"},
+		{type:"腰部防具",intro:"我是腰間!"},
+		{type:"腿部防具",intro:"我是腿部!"}
+	],
+	mydata:'Hello Vue!'
+  },
+  methods:{
+
+    addTodo: function(todo){
+      this.todos.push({content:todo,completed: false})
+    },
+    removeTodo: function(todo){
+      this.todos.splice(this.todos.indexOf(todo), 1);
+    }
+  }
+})
+</script>
+</html>

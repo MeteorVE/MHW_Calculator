@@ -1,0 +1,382 @@
+[
+  {
+    "sha": "4e6d6379ee35f986a842c95964615dc27afa832f",
+    "commit": {
+      "author": {
+        "name": "Evan You",
+        "email": "yyx990803@gmail.com",
+        "date": "2018-02-09T18:19:54Z"
+      },
+      "committer": {
+        "name": "Evan You",
+        "email": "yyx990803@gmail.com",
+        "date": "2018-02-09T18:20:07Z"
+      },
+      "message": "chore: update sponsors",
+      "tree": {
+        "sha": "27711fbbbdfd3dc60b9a9936edbc4168d082e173",
+        "url": "https://api.github.com/repos/vuejs/vue/git/trees/27711fbbbdfd3dc60b9a9936edbc4168d082e173"
+      },
+      "url": "https://api.github.com/repos/vuejs/vue/git/commits/4e6d6379ee35f986a842c95964615dc27afa832f",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null
+      }
+    },
+    "url": "https://api.github.com/repos/vuejs/vue/commits/4e6d6379ee35f986a842c95964615dc27afa832f",
+    "html_url": "https://github.com/vuejs/vue/commit/4e6d6379ee35f986a842c95964615dc27afa832f",
+    "comments_url": "https://api.github.com/repos/vuejs/vue/commits/4e6d6379ee35f986a842c95964615dc27afa832f/comments",
+    "author": {
+      "login": "yyx990803",
+      "id": 499550,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yyx990803",
+      "html_url": "https://github.com/yyx990803",
+      "followers_url": "https://api.github.com/users/yyx990803/followers",
+      "following_url": "https://api.github.com/users/yyx990803/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yyx990803/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yyx990803/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yyx990803/subscriptions",
+      "organizations_url": "https://api.github.com/users/yyx990803/orgs",
+      "repos_url": "https://api.github.com/users/yyx990803/repos",
+      "events_url": "https://api.github.com/users/yyx990803/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yyx990803/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "yyx990803",
+      "id": 499550,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yyx990803",
+      "html_url": "https://github.com/yyx990803",
+      "followers_url": "https://api.github.com/users/yyx990803/followers",
+      "following_url": "https://api.github.com/users/yyx990803/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yyx990803/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yyx990803/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yyx990803/subscriptions",
+      "organizations_url": "https://api.github.com/users/yyx990803/orgs",
+      "repos_url": "https://api.github.com/users/yyx990803/repos",
+      "events_url": "https://api.github.com/users/yyx990803/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yyx990803/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "39d58e521a4a6bc4c0d42f17453421ae155ec04f",
+        "url": "https://api.github.com/repos/vuejs/vue/commits/39d58e521a4a6bc4c0d42f17453421ae155ec04f",
+        "html_url": "https://github.com/vuejs/vue/commit/39d58e521a4a6bc4c0d42f17453421ae155ec04f"
+      }
+    ]
+  },
+  {
+    "sha": "39d58e521a4a6bc4c0d42f17453421ae155ec04f",
+    "commit": {
+      "author": {
+        "name": "Sheena Ramirez",
+        "email": "hello@sheenamramirez.com",
+        "date": "2018-02-06T00:58:33Z"
+      },
+      "committer": {
+        "name": "Evan You",
+        "email": "yyx990803@gmail.com",
+        "date": "2018-02-06T00:58:33Z"
+      },
+      "message": "chore: edit documentation for grammar and consistency (#7600)\n\n* edit docs for grammar and consistency\r\n\r\n* remove changes to pull request template",
+      "tree": {
+        "sha": "6804c2b5b202ec00a6523cf1f9a5d896f4a75dcc",
+        "url": "https://api.github.com/repos/vuejs/vue/git/trees/6804c2b5b202ec00a6523cf1f9a5d896f4a75dcc"
+      },
+      "url": "https://api.github.com/repos/vuejs/vue/git/commits/39d58e521a4a6bc4c0d42f17453421ae155ec04f",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null
+      }
+    },
+    "url": "https://api.github.com/repos/vuejs/vue/commits/39d58e521a4a6bc4c0d42f17453421ae155ec04f",
+    "html_url": "https://github.com/vuejs/vue/commit/39d58e521a4a6bc4c0d42f17453421ae155ec04f",
+    "comments_url": "https://api.github.com/repos/vuejs/vue/commits/39d58e521a4a6bc4c0d42f17453421ae155ec04f/comments",
+    "author": {
+      "login": "commonstarling",
+      "id": 14931558,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/14931558?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/commonstarling",
+      "html_url": "https://github.com/commonstarling",
+      "followers_url": "https://api.github.com/users/commonstarling/followers",
+      "following_url": "https://api.github.com/users/commonstarling/following{/other_user}",
+      "gists_url": "https://api.github.com/users/commonstarling/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/commonstarling/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/commonstarling/subscriptions",
+      "organizations_url": "https://api.github.com/users/commonstarling/orgs",
+      "repos_url": "https://api.github.com/users/commonstarling/repos",
+      "events_url": "https://api.github.com/users/commonstarling/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/commonstarling/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "yyx990803",
+      "id": 499550,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yyx990803",
+      "html_url": "https://github.com/yyx990803",
+      "followers_url": "https://api.github.com/users/yyx990803/followers",
+      "following_url": "https://api.github.com/users/yyx990803/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yyx990803/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yyx990803/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yyx990803/subscriptions",
+      "organizations_url": "https://api.github.com/users/yyx990803/orgs",
+      "repos_url": "https://api.github.com/users/yyx990803/repos",
+      "events_url": "https://api.github.com/users/yyx990803/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yyx990803/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2d168f1ba11d77cb2f2caa3356de86e99aba8da6",
+        "url": "https://api.github.com/repos/vuejs/vue/commits/2d168f1ba11d77cb2f2caa3356de86e99aba8da6",
+        "html_url": "https://github.com/vuejs/vue/commit/2d168f1ba11d77cb2f2caa3356de86e99aba8da6"
+      }
+    ]
+  },
+  {
+    "sha": "2d168f1ba11d77cb2f2caa3356de86e99aba8da6",
+    "commit": {
+      "author": {
+        "name": "Pig Fang",
+        "email": "g-plane@hotmail.com",
+        "date": "2018-02-03T19:02:25Z"
+      },
+      "committer": {
+        "name": "Evan You",
+        "email": "yyx990803@gmail.com",
+        "date": "2018-02-03T19:02:25Z"
+      },
+      "message": "test(types): update TS version and fix types test (#7597)",
+      "tree": {
+        "sha": "a1e587ed0bd2c0b7770eb7f4f2eed94dc34fb2bb",
+        "url": "https://api.github.com/repos/vuejs/vue/git/trees/a1e587ed0bd2c0b7770eb7f4f2eed94dc34fb2bb"
+      },
+      "url": "https://api.github.com/repos/vuejs/vue/git/commits/2d168f1ba11d77cb2f2caa3356de86e99aba8da6",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null
+      }
+    },
+    "url": "https://api.github.com/repos/vuejs/vue/commits/2d168f1ba11d77cb2f2caa3356de86e99aba8da6",
+    "html_url": "https://github.com/vuejs/vue/commit/2d168f1ba11d77cb2f2caa3356de86e99aba8da6",
+    "comments_url": "https://api.github.com/repos/vuejs/vue/commits/2d168f1ba11d77cb2f2caa3356de86e99aba8da6/comments",
+    "author": {
+      "login": "g-plane",
+      "id": 17216317,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/17216317?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/g-plane",
+      "html_url": "https://github.com/g-plane",
+      "followers_url": "https://api.github.com/users/g-plane/followers",
+      "following_url": "https://api.github.com/users/g-plane/following{/other_user}",
+      "gists_url": "https://api.github.com/users/g-plane/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/g-plane/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/g-plane/subscriptions",
+      "organizations_url": "https://api.github.com/users/g-plane/orgs",
+      "repos_url": "https://api.github.com/users/g-plane/repos",
+      "events_url": "https://api.github.com/users/g-plane/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/g-plane/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "yyx990803",
+      "id": 499550,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yyx990803",
+      "html_url": "https://github.com/yyx990803",
+      "followers_url": "https://api.github.com/users/yyx990803/followers",
+      "following_url": "https://api.github.com/users/yyx990803/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yyx990803/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yyx990803/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yyx990803/subscriptions",
+      "organizations_url": "https://api.github.com/users/yyx990803/orgs",
+      "repos_url": "https://api.github.com/users/yyx990803/repos",
+      "events_url": "https://api.github.com/users/yyx990803/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yyx990803/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "8053eb1fba4202274efed11044679e011a1e525b",
+        "url": "https://api.github.com/repos/vuejs/vue/commits/8053eb1fba4202274efed11044679e011a1e525b",
+        "html_url": "https://github.com/vuejs/vue/commit/8053eb1fba4202274efed11044679e011a1e525b"
+      }
+    ]
+  },
+  {
+    "sha": "8053eb1fba4202274efed11044679e011a1e525b",
+    "commit": {
+      "author": {
+        "name": "Evan You",
+        "email": "yyx990803@gmail.com",
+        "date": "2018-02-02T21:47:47Z"
+      },
+      "committer": {
+        "name": "Evan You",
+        "email": "yyx990803@gmail.com",
+        "date": "2018-02-02T21:47:47Z"
+      },
+      "message": "chore: update sponsors",
+      "tree": {
+        "sha": "3ecfc43ab2ff2437361cc9666ee5c0baa102d8ac",
+        "url": "https://api.github.com/repos/vuejs/vue/git/trees/3ecfc43ab2ff2437361cc9666ee5c0baa102d8ac"
+      },
+      "url": "https://api.github.com/repos/vuejs/vue/git/commits/8053eb1fba4202274efed11044679e011a1e525b",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null
+      }
+    },
+    "url": "https://api.github.com/repos/vuejs/vue/commits/8053eb1fba4202274efed11044679e011a1e525b",
+    "html_url": "https://github.com/vuejs/vue/commit/8053eb1fba4202274efed11044679e011a1e525b",
+    "comments_url": "https://api.github.com/repos/vuejs/vue/commits/8053eb1fba4202274efed11044679e011a1e525b/comments",
+    "author": {
+      "login": "yyx990803",
+      "id": 499550,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yyx990803",
+      "html_url": "https://github.com/yyx990803",
+      "followers_url": "https://api.github.com/users/yyx990803/followers",
+      "following_url": "https://api.github.com/users/yyx990803/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yyx990803/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yyx990803/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yyx990803/subscriptions",
+      "organizations_url": "https://api.github.com/users/yyx990803/orgs",
+      "repos_url": "https://api.github.com/users/yyx990803/repos",
+      "events_url": "https://api.github.com/users/yyx990803/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yyx990803/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "yyx990803",
+      "id": 499550,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yyx990803",
+      "html_url": "https://github.com/yyx990803",
+      "followers_url": "https://api.github.com/users/yyx990803/followers",
+      "following_url": "https://api.github.com/users/yyx990803/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yyx990803/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yyx990803/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yyx990803/subscriptions",
+      "organizations_url": "https://api.github.com/users/yyx990803/orgs",
+      "repos_url": "https://api.github.com/users/yyx990803/repos",
+      "events_url": "https://api.github.com/users/yyx990803/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yyx990803/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "acb3bde95bb9d4a77a42b9d93b9267ed751ec4e4",
+        "url": "https://api.github.com/repos/vuejs/vue/commits/acb3bde95bb9d4a77a42b9d93b9267ed751ec4e4",
+        "html_url": "https://github.com/vuejs/vue/commit/acb3bde95bb9d4a77a42b9d93b9267ed751ec4e4"
+      }
+    ]
+  },
+  {
+    "sha": "acb3bde95bb9d4a77a42b9d93b9267ed751ec4e4",
+    "commit": {
+      "author": {
+        "name": "Evan You",
+        "email": "yyx990803@gmail.com",
+        "date": "2018-02-02T17:23:31Z"
+      },
+      "committer": {
+        "name": "Evan You",
+        "email": "yyx990803@gmail.com",
+        "date": "2018-02-02T17:23:31Z"
+      },
+      "message": "chore: update sponsors",
+      "tree": {
+        "sha": "9038018f8a258c590f0e34996e234099cc6917d0",
+        "url": "https://api.github.com/repos/vuejs/vue/git/trees/9038018f8a258c590f0e34996e234099cc6917d0"
+      },
+      "url": "https://api.github.com/repos/vuejs/vue/git/commits/acb3bde95bb9d4a77a42b9d93b9267ed751ec4e4",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null
+      }
+    },
+    "url": "https://api.github.com/repos/vuejs/vue/commits/acb3bde95bb9d4a77a42b9d93b9267ed751ec4e4",
+    "html_url": "https://github.com/vuejs/vue/commit/acb3bde95bb9d4a77a42b9d93b9267ed751ec4e4",
+    "comments_url": "https://api.github.com/repos/vuejs/vue/commits/acb3bde95bb9d4a77a42b9d93b9267ed751ec4e4/comments",
+    "author": {
+      "login": "yyx990803",
+      "id": 499550,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yyx990803",
+      "html_url": "https://github.com/yyx990803",
+      "followers_url": "https://api.github.com/users/yyx990803/followers",
+      "following_url": "https://api.github.com/users/yyx990803/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yyx990803/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yyx990803/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yyx990803/subscriptions",
+      "organizations_url": "https://api.github.com/users/yyx990803/orgs",
+      "repos_url": "https://api.github.com/users/yyx990803/repos",
+      "events_url": "https://api.github.com/users/yyx990803/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yyx990803/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "yyx990803",
+      "id": 499550,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yyx990803",
+      "html_url": "https://github.com/yyx990803",
+      "followers_url": "https://api.github.com/users/yyx990803/followers",
+      "following_url": "https://api.github.com/users/yyx990803/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yyx990803/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yyx990803/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yyx990803/subscriptions",
+      "organizations_url": "https://api.github.com/users/yyx990803/orgs",
+      "repos_url": "https://api.github.com/users/yyx990803/repos",
+      "events_url": "https://api.github.com/users/yyx990803/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yyx990803/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ced00b1dec8326a653cce225133927fe5b4a3109",
+        "url": "https://api.github.com/repos/vuejs/vue/commits/ced00b1dec8326a653cce225133927fe5b4a3109",
+        "html_url": "https://github.com/vuejs/vue/commit/ced00b1dec8326a653cce225133927fe5b4a3109"
+      }
+    ]
+  }
+]
