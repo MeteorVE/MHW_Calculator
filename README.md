@@ -1,7 +1,7 @@
 # MHW_Calculator
 In Summer, I addicted in Monster Hunter World, so I write a calculator ... BUT THIS IS OUTDATE.
 
-You can visit at here : https://meteorve.github.io/MHW_Calculator/
+You can visit at here : https://meteorve.github.io/MHW_Calculator/mhw.html
 
 使用語言 : HTML + Vue.js
 說實在的，根本算不上是使用 Vue.js QQ
